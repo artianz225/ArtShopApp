@@ -39,26 +39,57 @@
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   border-top: 1px solid tomato;
-  border-bottom: 1px solid tomato;
+  border-bottom: 1px solid #ff6347;
   border-left: none;
   border-right: 1px solid tomato;
   background-color: white;
 }
 
-.shop-logo-container {
+.featured-images-container {
   display: flex;
+  position: relative;
   align-items: center;
+  justify-content: center;
   width: 100%;
   max-width: 630px;
   height: 160px;
-  padding: 15px;
-  border-radius: 15px;
-  background-color: rgba(128, 128, 128, 0.3);
 }
 
-.shop-logo-container img {
-  width: 160px;
-  height: 150px;
+.animated-slide.active {
+  opacity: 1;
+  transition-duration: .5 ease;
+} 
+
+.animated-slide {
+  opacity: 0;
+  transition-duration: .5s;
+} 
+
+.featured-images-wrapper img {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 160px;
+  border-radius: 15px;
+  z-index: 5;
+}
+
+.prev-btn {
+  display: flex;
+  position: absolute;
+  left: 10px;
+  z-index: 9;
+  cursor: pointer;
+}
+
+.next-btn {
+  display: flex;
+  position: absolute;
+  right: 10px;
+  z-index: 9;
+  cursor: pointer;
 }
 
 .shop-text-wrapper {

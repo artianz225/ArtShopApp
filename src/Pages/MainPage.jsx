@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../Pages/MainPage.css'
 
 import shop_logo from '../images/shop-logo.png';
+import Main_page_slider_one from '../images/main-page-slider-one.png';
+import Main_page_slider_two from '../images/main-page-slider-two.png';
+import Main_page_slider_three from '../images/main-page-slider-three.png';
 import Orange_Voucher from '../images/Orange-Voucher.png';
 import Yellow_Voucher from '../images/Yellow-Voucher.png';
 import Red_Voucher from '../images/Red-Voucher.png';
@@ -19,8 +22,43 @@ import Motor_Parts_Category from '../images/motor-parts-category.png'
 import { BsTicketPerforated } from "react-icons/bs";
 import { FcElectricity, FcLikePlaceholder, FcInTransit, FcShop, FcCurrencyExchange } from "react-icons/fc";
 import { BiSearchAlt, BiCategoryAlt, } from "react-icons/bi";
+import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 
 function MainPage() {
+
+  const [featuredSlides, setFeaturedSlides] = useState([
+    {
+      id: 1,
+      img: Main_page_slider_one,
+    },
+    {
+      id: 2,
+      img: Main_page_slider_two,
+    },
+    {
+      id: 3,
+      img: Main_page_slider_three,
+    },
+  ])
+
+  const [currentSlide, setCurrentSlide] = useState(1);
+
+  const prevFeaturedImage = () => {
+    setCurrentSlide(prev => prev -1)
+
+    if (currentSlide <= 1) {
+      setCurrentSlide(3)
+    }
+  }
+
+  const nextFeaturedImage = () => {
+    setCurrentSlide(prev => prev +1);
+
+    if ( currentSlide >= 3) {
+      setCurrentSlide(1)
+    }
+  }
+
   return (
     <div className='main-container'>
       
@@ -33,12 +71,18 @@ function MainPage() {
           </div>
         </div>
 
-        <div className="shop-logo-container">
-          <img src={shop_logo} alt="" />
-        <div className="shop-text-wrapper">
-          <h3>Welcome to Art Ecommerce platform</h3>
-          <p>Your one stop online shop</p>
-        </div>
+        <div className="featured-images-container">
+          <div onClick={prevFeaturedImage} className='prev-btn'><MdArrowBackIosNew /></div>
+          {featuredSlides.map((featured) => (
+            <div key={featured.id} className={featured.id === currentSlide ? 'animated-slide active' : 'animated-slide'}>
+            {featured.id === currentSlide && (
+            <div className='featured-images-wrapper'>
+            <img src={featured.img} alt=""/>
+            </div>
+            )}
+            </div>
+          ))}
+          <div onClick={nextFeaturedImage} className='next-btn'><MdArrowForwardIos /></div>
         </div>
 
         <div className="circles-btn-container">
