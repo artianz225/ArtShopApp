@@ -5,8 +5,11 @@ import MainPageCircleBtns from '../Components/MainPageCircleBtns';
 import MainPageVoucher from '../Components/MainPageVoucher';
 import MainPageCategories from '../Components/MainPageCategories';
 import MainPageSearchBar from '../Components/MainPageSearchBar';
+import { useNavigate } from 'react-router-dom';
  
 function MainPage() {
+
+  const navigate = useNavigate();
 
   return (
     <div className='main-container'>
@@ -20,7 +23,7 @@ function MainPage() {
 
       </div>
 
-      <button className='main-page-shop-now-btn'>Shop Now</button>
+      <button onClick={() => navigate('/main-products')} className='main-page-shop-now-btn'>Shop Now</button>
       
     </div>
   )

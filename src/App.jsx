@@ -15,15 +15,13 @@ function App() {
     setOpenSidebar(!openSidebar);
   }
 
-  console.log(addedToCartProductItems)
-
   return (
     <BrowserRouter>
 
     <Nav toggleSidebar={toggleSidebar} openSidebar={openSidebar} setOpenSidebar={setOpenSidebar}/>
 
       <Routes>
-        <Route path='/' element={<MainPage />} />
+        <Route path="/" element={<MainPage />} />
         <Route path='/main-products' element={<MainProduct addedToCartProductItems={addedToCartProductItems} setAddedToCartProductItems={setAddedToCartProductItems} />} />
         <Route path='/my-cart' element={<MyCart addedToCartProductItems={addedToCartProductItems} setAddedToCartProductItems={setAddedToCartProductItems} />} />
       </Routes>

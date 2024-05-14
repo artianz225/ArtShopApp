@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import '../Pages/MainProducts.css';
 import { BiSearchAlt, } from "react-icons/bi";
 import axios from 'axios';
-
 import { BsCartPlus, BsInfoCircle } from "react-icons/bs";
 import { FaShippingFast, FaStar } from "react-icons/fa";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { TbSquareArrowLeft, TbSquareArrowRight } from "react-icons/tb";
+import { useNavigate } from 'react-router-dom';
 
 function MainProducts({addedToCartProductItems, setAddedToCartProductItems }) {
 
@@ -18,6 +18,7 @@ function MainProducts({addedToCartProductItems, setAddedToCartProductItems }) {
   const [scrollLock, setScrollLock] = useState(bodyStyle.overflowY === 'hidden');
   const [currentProductimage, setCurrentProductimage] = useState(0);
   const lengthOfEachImages = productDetails.map(details => details.images.length);
+  const navigate = useNavigate()
 
   useEffect(() => {
     bodyStyle.overflowY = scrollLock ? 'hidden' : 'auto' 
