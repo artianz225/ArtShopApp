@@ -1,4 +1,5 @@
 import React from 'react'
+import '../Pages/Footer.css';
 
 import QR_Code from '../images/qr-code.png'
 import { CiFacebook, CiInstagram, CiTwitter } from "react-icons/ci";

@@ -1,0 +1,33 @@
+.vouchers-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+  height: 140px;
+}
+
+.voucher-title-and-link-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 40px;
+}
+
+.voucher-title-and-link-wrapper p {
+  color: tomato;
+}
+
+.voucher-tickets-wrapper {
+  display: flex;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  padding: 5px;
+  overflow-x: scroll;
+  gap: .3em;
+  background-color: rgba(128, 128, 128, 0.3);
+  border-radius: 15px;
+}

@@ -1,51 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react';
 import './App.css';
-import { useState } from 'react';
-import MainPage from './Pages/MainPage';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Nav from './Components/Nav';
-import Footer from './Pages/Footer';
+import MainPage from './Pages/MainPage';
+import MainProduct from './Pages/MainProducts';
+import MyCart from './Pages/MyCart';
 
 function App() {
 
   const [openSidebar, setOpenSidebar] = useState(false);
-
+  const [addedToCartProductItems, setAddedToCartProductItems] = useState([]); 
+  
   const toggleSidebar = () => {
     setOpenSidebar(!openSidebar);
   }
 
+  console.log(addedToCartProductItems)
+
   return (
-    <div>
+    <BrowserRouter>
 
+    <Nav toggleSidebar={toggleSidebar} openSidebar={openSidebar} setOpenSidebar={setOpenSidebar}/>
 
+      <Routes>
+        <Route path='/' element={<MainPage />} />
+        <Route path='/main-products' element={<MainProduct addedToCartProductItems={addedToCartProductItems} setAddedToCartProductItems={setAddedToCartProductItems} />} />
+        <Route path='/my-cart' element={<MyCart addedToCartProductItems={addedToCartProductItems} setAddedToCartProductItems={setAddedToCartProductItems} />} />
+      </Routes>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <Nav toggleSidebar={toggleSidebar} openSidebar={openSidebar} />
-      <MainPage />
-      <Footer />
-    </div>
+    </BrowserRouter>
   )
 }
 
