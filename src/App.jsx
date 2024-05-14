@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import Nav from './Components/Nav';
 import MainPage from './Pages/MainPage';
 import MainProduct from './Pages/MainProducts';
@@ -17,15 +17,18 @@ function App() {
 
   return (
     <BrowserRouter>
-
-    <Nav toggleSidebar={toggleSidebar} openSidebar={openSidebar} setOpenSidebar={setOpenSidebar}/>
+      <Nav
+        toggleSidebar={toggleSidebar}
+        openSidebar={openSidebar}
+        setOpenSidebar={setOpenSidebar}
+      />
 
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path='/main-products' element={<MainProduct addedToCartProductItems={addedToCartProductItems} setAddedToCartProductItems={setAddedToCartProductItems} />} />
-        <Route path='/my-cart' element={<MyCart addedToCartProductItems={addedToCartProductItems} setAddedToCartProductItems={setAddedToCartProductItems} />} />
+        <Route path="/main-products" element={<MainProduct addedToCartProductItems={addedToCartProductItems} setAddedToCartProductItems={setAddedToCartProductItems} />} />
+        <Route path="/my-cart" element={<MyCart addedToCartProductItems={addedToCartProductItems} setAddedToCartProductItems={setAddedToCartProductItems} />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-
     </BrowserRouter>
   )
 }
