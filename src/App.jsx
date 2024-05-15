@@ -17,17 +17,40 @@ function App() {
 
   return (
     <BrowserRouter>
+
       <Nav
         toggleSidebar={toggleSidebar}
         openSidebar={openSidebar}
         setOpenSidebar={setOpenSidebar}
+        addedToCartProductItems={addedToCartProductItems}
       />
 
       <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/main-products" element={<MainProduct addedToCartProductItems={addedToCartProductItems} setAddedToCartProductItems={setAddedToCartProductItems} />} />
-        <Route path="/my-cart" element={<MyCart addedToCartProductItems={addedToCartProductItems} setAddedToCartProductItems={setAddedToCartProductItems} />} />
-        <Route path="*" element={<Navigate to="/" />} />
+
+        <Route 
+          path="/" 
+          element={<MainPage />} 
+        />
+
+        <Route 
+          path="/main-products" 
+          element={<MainProduct 
+          addedToCartProductItems={addedToCartProductItems} 
+          setAddedToCartProductItems={setAddedToCartProductItems} />} 
+        />
+
+        <Route 
+          path="/my-cart" 
+          element={<MyCart 
+          addedToCartProductItems={addedToCartProductItems} 
+          setAddedToCartProductItems={setAddedToCartProductItems} />} 
+        />
+
+        <Route 
+          path="*" 
+          element={<Navigate to="/" replace />} 
+        />
+
       </Routes>
     </BrowserRouter>
   )

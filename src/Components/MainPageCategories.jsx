@@ -13,7 +13,7 @@ function MainPageCategories() {
       <div className="categories-container">
           <div className="category-title-wrapper">
             <h3>Categories</h3>
-            <p>View All <BiCategoryAlt /></p>
+            <p>View All <BiCategoryAlt className='icon' /></p>
           </div>
 
           <div className="categories-icon-and-title-container">

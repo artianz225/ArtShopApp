@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import '../Pages/MyCart.css';
 import { IoMdAddCircleOutline, IoMdRemoveCircleOutline } from "react-icons/io";
 
 function MyCart({addedToCartProductItems, setAddedToCartProductItems }) {
@@ -9,6 +10,10 @@ function MyCart({addedToCartProductItems, setAddedToCartProductItems }) {
   const [totalCheckedLength, setTotalCheckedLength] = useState(0);
   const [placedOrderOpen, setPlacedOrderOpen] = useState(false);
   const [placedOrder, setPlacedOrder] = useState([]);
+  const [cartEmptyMessage, setCartEmptyMessage] = useState(true);
+
+  const [isNotCheckOrSelectedWrapper, setIsNotCheckOrSelectedWrapper] = useState(false);
+  const [isNotCheckOrSelectedMessage, setIsNotCheckOrSelectedMessage] = useState('')
 
   const handleSelectAllChange = (e) => {
     const isChecked = e.target.checked;
@@ -75,15 +80,33 @@ function MyCart({addedToCartProductItems, setAddedToCartProductItems }) {
     const checkedItems = addedToCartProductItems.filter(addedToCartItem => addedToCartItem.isChecked);
 
     if (addedToCartProductItems.length === 0) {
-      alert('please add a product');
+      setIsNotCheckOrSelectedWrapper(true);
+      setIsNotCheckOrSelectedMessage('please add a product first');
     } else if (checkedItems.length === 0) {
-      alert ('please checked the product you want to place order');
+      setIsNotCheckOrSelectedWrapper(true);
+      setIsNotCheckOrSelectedMessage('please select a product first');
     } else {
     setPlacedOrder([...placedOrder, ...checkedItems]);
     setPlacedOrderOpen(!placedOrderOpen)
     }
-  };
+  }
+
+  useEffect(() => {
+    if (addedToCartProductItems.length === 0) {
+      setCartEmptyMessage(true)
+    } else {
+      setCartEmptyMessage(false)
+    }
+  }, [addedToCartProductItems.length])
+
+  useEffect(() => {
+    const timeOutMessage = setTimeout (() => {
+      setIsNotCheckOrSelectedWrapper(false);
+    }, 1000)
+  }, [isNotCheckOrSelectedWrapper]);
+
   return (
+    <div className="cart-wrapper">
       <div className="added-to-cart-product-items-container">
 
         <div className="added-to-cart-header-wrapper">
@@ -92,6 +115,11 @@ function MyCart({addedToCartProductItems, setAddedToCartProductItems }) {
             <input type="checkbox" checked={selectAllChecked} onChange={handleSelectAllChange} id="selectAllCheckbox" /> Select All
           </div>
         </div>
+
+        <div className={cartEmptyMessage ? "added-to-cart-empty-cart-message-on" : "added-to-cart-empty-cart-message-off"}>
+          <p>--- Your cart is empty ---</p>
+        </div>
+
         <div className="added-to-cart-product-items">
           {addedToCartProductItems.map((addedToCartItem, i) => (
             <div key={i} className='added-to-cart-items-wrapper'>
@@ -131,7 +159,12 @@ function MyCart({addedToCartProductItems, setAddedToCartProductItems }) {
           </div>
         </div>
 
+        {isNotCheckOrSelectedWrapper ? <div className="empty-or-uncheck-message">
+          <p>{isNotCheckOrSelectedMessage}</p>
+        </div> : ''}
+
       </div>
+    </div>
   )
 }
 

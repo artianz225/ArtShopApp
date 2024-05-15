@@ -12,13 +12,14 @@ function MainProducts({addedToCartProductItems, setAddedToCartProductItems }) {
 
   const bodyStyle = document.body.style
   const [productsItems, setProductItems] = useState([]);
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
   const [productDetails, setProductDetails] = useState([]);
   const [toggleProductDetailModal, setToggleProductDetailModal] = useState(false);
   const [scrollLock, setScrollLock] = useState(bodyStyle.overflowY === 'hidden');
   const [currentProductimage, setCurrentProductimage] = useState(0);
   const lengthOfEachImages = productDetails.map(details => details.images.length);
-  const navigate = useNavigate()
+
+  const [addedToCartMassageWrapper, setAddedToCartMassageWrapper] = useState(false);
 
   useEffect(() => {
     bodyStyle.overflowY = scrollLock ? 'hidden' : 'auto' 
@@ -58,6 +59,7 @@ function MainProducts({addedToCartProductItems, setAddedToCartProductItems }) {
   }
 
   const handleAddToCartProductItem = (product) => {
+    setAddedToCartMassageWrapper(true);
 
     const existingProduct = addedToCartProductItems.find(addedToCartProductItem => addedToCartProductItem.id === product.id);
 
@@ -71,7 +73,14 @@ function MainProducts({addedToCartProductItems, setAddedToCartProductItems }) {
     }
   }
 
+  useEffect(() => {
+    const timeOutMessage = setTimeout (() => {
+      setAddedToCartMassageWrapper(false)
+    }, 1000)
+  }, [addedToCartMassageWrapper])
+
   return (
+  <div className="product-wrapper">
     <div className='main-products-main-container'>
 
       <div className="searchbar-container">
@@ -135,7 +144,12 @@ function MainProducts({addedToCartProductItems, setAddedToCartProductItems }) {
         </div>
       </div>
 
+      {addedToCartMassageWrapper  ? <div className="product-added-to-cart-message">
+        <p>added to cart successfully</p>
+      </div> : ''}
+
     </div>
+  </div>
   )
 }
 
