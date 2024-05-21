@@ -75,12 +75,14 @@
   bottom: 10px;
   width: 55px;
 }
-.minus-icon {
+
+.minus-icon, .add-icon  {
   color: tomato;
+  cursor: pointer;
 }
 
-.add-icon {
-  color: tomato;
+.minus-icon:hover, .add-icon:hover  {
+  color: red;
 }
 
 .added-to-cart-product-item-total-cart-container {
@@ -131,6 +133,11 @@
   border: none;
   color: white;
   background-color: tomato;
+  cursor: pointer;
+}
+
+.added-to-cart-place-order-btn:hover {
+  background-color: red;
 }
 
 .added-to-cart-empty-cart-message-on {

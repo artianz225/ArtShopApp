@@ -7,7 +7,7 @@ import { PiTiktokLogoLight } from "react-icons/pi";
 
 function Footer() {
   return (
-    <div>
+    <div className='main-container'>
       
       <div className="footer-main-container">
 

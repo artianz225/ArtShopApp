@@ -13,7 +13,7 @@ function MainPageVoucher() {
     <div className="vouchers-container">
 
       <div className="voucher-title-and-link-wrapper">
-        <h3>Get your voucher here</h3>
+        <h3>Get vouchers here</h3>
         <p>See All <BsTicketPerforated className='icon' /></p>
       </div>
 

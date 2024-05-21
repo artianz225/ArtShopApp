@@ -24,12 +24,12 @@
   justify-content: center;
   right: 25px;
   bottom: 25px;
-  width: 100px;
-  height: 40px;
+  width: 150px;
+  height: 55px;
   color: white;
   font-size: 12px;
   background-color: tomato;
-  border-radius: 15px;
+  border-radius: 12px;
   border: none;
   z-index: 1;
   cursor: pointer;

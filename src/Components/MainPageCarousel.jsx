@@ -11,15 +11,15 @@ function MainPageCarousel() {
   const [featuredSlides, setFeaturedSlides] = useState([
     {
       id: 1,
-      img: Main_page_slider_one,
+      img: 'https://cdn-prd-strapi.debutify.com/Product_Page_Design_Done_Right_Header_ab0632898f.png',
     },
     {
       id: 2,
-      img: Main_page_slider_two,
+      img: 'https://cedcommerce.com/blog/wp-content/uploads/2021/04/Shopping-in-reels.jpg',
     },
     {
       id: 3,
-      img: Main_page_slider_three,
+      img: 'https://media.licdn.com/dms/image/D5612AQEDWZ1OBDxuyg/article-cover_image-shrink_720_1280/0/1679506836578?e=2147483647&v=beta&t=dRIYH0nG2T3niS9PnjKogHDdy9gH8JdJf-nFpTVoIxA',
     },
   ])
 

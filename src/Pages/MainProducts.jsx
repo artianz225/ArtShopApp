@@ -8,10 +8,9 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 import { TbSquareArrowLeft, TbSquareArrowRight } from "react-icons/tb";
 import { useNavigate } from 'react-router-dom';
 
-function MainProducts({addedToCartProductItems, setAddedToCartProductItems }) {
+function MainProducts({addedToCartProductItems, setAddedToCartProductItems, productsItems, setProductItems }) {
 
   const bodyStyle = document.body.style
-  const [productsItems, setProductItems] = useState([]);
   const [search, setSearch] = useState('');
   const [productDetails, setProductDetails] = useState([]);
   const [toggleProductDetailModal, setToggleProductDetailModal] = useState(false);

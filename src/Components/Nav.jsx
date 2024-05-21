@@ -7,13 +7,12 @@ import { RiCustomerServiceFill, RiAccountPinCircleFill } from "react-icons/ri";
 import { IoNotificationsSharp, IoSettings, IoClose } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
 
-function Nav({ toggleSidebar, openSidebar, setOpenSidebar, addedToCartProductItems }) {
+function Nav({ toggleSidebar, openSidebar, setOpenSidebar, addedToCartProductItems, completeOrderStatus }) {
 
   const navigate = useNavigate();
 
   const handleSidebarChanges = () => {
     setOpenSidebar(!openSidebar)
-
   }
   return (
     <nav>
@@ -31,7 +30,8 @@ function Nav({ toggleSidebar, openSidebar, setOpenSidebar, addedToCartProductIte
           <BsThreeDotsVertical className='nav-setting-icon' />
         </div>
 
-        <div className={openSidebar ? 'nav-sidebar-main-container-on' : 'nav-sidebar-main-container-off'}>
+        <div onClick={handleSidebarChanges} className={openSidebar ? 'nav-sidebar-main-container-on' : 'nav-sidebar-main-container-off'}>
+          <div className={openSidebar ? 'nav-sidebar-main-wrapper-on' : 'nav-sidebar-main-wrapper-off'}>
           <div className="side-bar-header-section-container">
             <img src="https://i.pngimg.me/thumb/f/720/c3f2c592f9.jpg" alt="" />
             <h3>Arthur John Philipps</h3>
@@ -45,16 +45,16 @@ function Nav({ toggleSidebar, openSidebar, setOpenSidebar, addedToCartProductIte
               <li onClick={handleSidebarChanges}><div className='icon-link-wrapper' onClick={() => navigate('/')}><span><FaHouse /></span> Home</div></li>
               <li onClick={handleSidebarChanges}><div className='icon-link-wrapper' onClick={() => navigate('/main-products')}><span><FaShoppingBag /></span> Shop Now</div></li>
               <li onClick={handleSidebarChanges}><div className='icon-link-wrapper' onClick={() => navigate('/my-cart')}><span><FaCartShopping /></span> My Cart <p>{addedToCartProductItems.length}</p></div></li>
-              <li onClick={handleSidebarChanges}><div className='icon-link-wrapper' onClick={() => navigate('')}><span><BsFillBox2HeartFill /></span> Order Status <p>0</p></div></li>
+              <li onClick={handleSidebarChanges}><div className='icon-link-wrapper' onClick={() => navigate('')}><span><BsFillBox2HeartFill /></span> Order Status <p>{completeOrderStatus.length}</p></div></li>
               <li onClick={handleSidebarChanges}><div className='icon-link-wrapper' onClick={() => navigate('')}><span><FaHistory /></span> Order History</div></li>
               <li onClick={handleSidebarChanges}><div className='icon-link-wrapper' onClick={() => navigate('')}><span><RiAccountPinCircleFill /></span> My Acount</div></li>
               <li onClick={handleSidebarChanges}><div className='icon-link-wrapper' onClick={() => navigate('')}><span><IoNotificationsSharp /></span> Notification<p>0</p></div></li>
-              <li onClick={handleSidebarChanges}><div className='icon-link-wrapper' onClick={() => navigate('')}><span><FaQuestionCircle /></span> FAQ's</div></li>
+              <li onClick={handleSidebarChanges}><div className='icon-link-wrapper' onClick={() => navigate('/faq')}><span><FaQuestionCircle /></span> FAQ's</div></li>
               <li onClick={handleSidebarChanges}><div className='icon-link-wrapper' onClick={() => navigate('')}><span><RiCustomerServiceFill /></span> Help Center</div></li>
               <li onClick={handleSidebarChanges}><div className='icon-link-wrapper' onClick={() => navigate('')}><span><IoSettings /></span> Settings</div></li>
             </ul>
           </div>
-
+          </div>
         </div>
       </div>
     </nav>
